@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pulse Cad System's</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      border-bottom: 2px solid #333;
+    }
+    .logo-title {
+      display: flex;
+      align-items: center;
+    }
+    .logo-title img {
+      height: 50px;
+      margin-right: 15px;
+    }
+    .logo-title h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .buttons button:hover {
+      background-color: #0056b3;
+    }
+    .content {
+      padding: 40px;
+      text-align: center;
+    }
+    .login-container {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #007BFF;
+      width: 300px;
+      margin: 40px auto;
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .login-container button:hover {
+      background-color: #0056b3;
+    }
+    .discord-btn {
+      background-color: #5865F2;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-title">
+      <img src="https://cdn.discordapp.com/attachments/1398783328768757760/1398797372427079700/WINCaNA.png?ex=689dbd51&is=689c6bd1&hm=12e7444a5ca9212cf360d5409791c0ff96400a326f6f4258d245fa44329792c4&" alt="Pulse Logo">
+      <h1>Pulse Cad System's</h1>
+    </div>
+    <div class="buttons">
+      <button onclick="showHome()">Home</button>
+      <button onclick="showTeam()">Team</button>
+      <button onclick="showLogin()">Login</button>
+    </div>
+  </div>
+
+  <div class="content" id="main-content">
+    <h2>Welcome to Pulse Cad System's</h2>
+    <p>This is your homepage. Click "Login" to access your account.</p>
+  </div>
+
+  <script>
+    function showHome() {
+      document.getElementById('main-content').innerHTML = `
+        <h2>Welcome to Pulse Cad System's</h2>
+        <p>This is your homepage. Click "Login" to access your account.</p>
+      `;
+    }
+
+    function showTeam() {
+      document.getElementById('main-content').innerHTML = `
+        <h2>Meet the Team</h2>
+        <p>Team details will go here.</p>
+      `;
+    }
+
+    function showLogin() {
+      document.getElementById('main-content').innerHTML = `
+        <div class="login-container">
+          <h2>Login</h2>
+          <input type="text" placeholder="Username">
+          <input type="password" placeholder="Password">
+          <button>Login</button>
+          <button class="discord-btn" onclick="loginWithDiscord()">Login with Discord</button>
+        </div>
+      `;
+    }
+
+    function loginWithDiscord() {
+      const clientId = 'YOUR_DISCORD_CLIENT_ID';
+      const redirectUri = 'YOUR_REDIRECT_URI';
+      const scope = 'identify email';
+      const discordAuthUrl = 'https://discord.com/oauth2/authorize?client_id=' + clientId +
+        '&redirect_uri=' + encodeURIComponent(redirectUri) +
+        '&response_type=code&scope=' + encodeURIComponent(scope);
+      window.location.href = discordAuthUrl;
+    }
+  </script>
+</body>
+</html>
+
